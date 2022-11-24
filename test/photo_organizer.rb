@@ -1,6 +1,6 @@
 require "minitest/autorun"
 require "date"
-require_relative "../photo_organizer"
+require_relative "../lib/photo_organizer"
 
 class PhotoOrganizerTest < Minitest::Test
   def test_basic

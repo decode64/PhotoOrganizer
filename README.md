@@ -24,7 +24,7 @@ New York1.jpeg
 Import the `photo_organizer.rb` file and call the `solution` method:
 
 ```ruby
-require "./photo_organizer.rb"
+require "./lib/photo_organizer.rb"
 
 input = <<~TEXT
   thebean.jpg, Chicago, 2022-11-23 13:00:00
@@ -35,6 +35,14 @@ TEXT
 
 solution(input)
 ```
+
+Alternatively, you can use the following command:
+
+```
+ruby bin/photo_organizer.rb
+```
+
+Enter the photo information list and press `CTRL+D` to get the result.
 
 ## Test
 
