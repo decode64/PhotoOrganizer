@@ -43,46 +43,28 @@ class PhotoOrganizerTest < Minitest::Test
     assert solution(input) == expected_result
   end
 
-  def test_output_no_leading_zeros
-    now = DateTime.now
+  def test_output_leading_zeros
+    date = DateTime.now - 10
     date_format = "%Y-%m-%d %H:%M:%S"
     expected_result = []
     input = ""
 
     (1..9).each do |n|
-      input << "photo.jpg, Oklahoma City, #{(now - (n/1440.0)).strftime(date_format)}\n"
+      input << "photo.jpg, Oklahoma City, #{(date + (n/1440.0)).strftime(date_format)}\n"
       expected_result << "Oklahoma City#{n}.jpg"
     end
 
-    assert solution(input) == expected_result.reverse.join("\n")
-  end
-
-  def test_output_one_leading_zero
-    now = DateTime.now
-    date_format = "%Y-%m-%d %H:%M:%S"
-    expected_result = []
-    input = ""
-
-    (1..10).each do |n|
-      input << "photo.jpg, Oklahoma City, #{(now - (n/1440.0)).strftime(date_format)}\n"
-      expected_result << "Oklahoma City#{'%02d' % n}.jpg"
+    (1..12).each do |n|
+      input << "photo.jpg, London, #{(date + (n/1440.0)).strftime(date_format)}\n"
+      expected_result << "London#{'%02d' % n}.jpg"
     end
 
-    assert solution(input) == expected_result.reverse.join("\n")
-  end
-
-  def test_output_two_leading_zeros
-    now = DateTime.now
-    date_format = "%Y-%m-%d %H:%M:%S"
-    expected_result = []
-    input = ""
-
     (1..100).each do |n|
-      input << "photo.jpg, Curitiba, #{(now - (n/1440.0)).strftime(date_format)}\n"
+      input << "photo.jpg, Curitiba, #{(date + (n/1440.0)).strftime(date_format)}\n"
       expected_result << "Curitiba#{'%03d' % n}.jpg"
     end
 
-    assert solution(input) == expected_result.reverse.join("\n")
+    assert solution(input) == expected_result.join("\n")
   end
 
   def test_output_file_extensions
